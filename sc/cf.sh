@@ -6,10 +6,10 @@ z="\033[1;93m"
 #CF_ID=ridwanstoreaws@gmail.com
 #CF_KEY=4ecfe9035f4e6e60829e519bd5ee17d66954f
 sub=sc-`</dev/urandom tr -dc a-z0-9 | head -c5`
-DOMAIN=vpn-prem.biz.id
-SUB_DOMAIN=${sub}.vpn-prem.biz.id
-CF_ID=padliapandi459@gmail.com
-CF_KEY=1a700ef4a22e642f0ea8d43420bb0b1237589
+DOMAIN=24clan.com
+SUB_DOMAIN=${sub}.24clan.com
+CF_ID=farukbrowser0@gmail.com
+CF_KEY=95b295f79baa8c7a3c264ca5cc31b75131c6d
 set -euo pipefail
 IP=$(curl -sS ipv4.icanhazip.com);
 echo "Updating DNS for ${SUB_DOMAIN}..."
