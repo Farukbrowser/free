@@ -6,14 +6,14 @@
   </p> 
  
  <p align="center"> 
- <img height=21 src="https://komarev.com/ghpvc/?username=farukbrowser">
+ <img height=21 src="https://komarev.com/ghpvc/?username=zhets">
  </p>
 
 <p align="center">
 <img src="https://readme-typing-svg.herokuapp.com?color=%2336BCF7&center=true&vCenter=true&lines=XDXL+PROJECT" />
 </p>
 
-![XDXL%20STORE card name](https://cardivo.vercel.app/api?name=XDXL%20STORE&description=Hi,%20everyone!%20and%20Nice%20to%20meet%20you%20%F0%9F%91%8B&image=https://raw.githubusercontent.com/farukbrowser/farukbrowser/main/profile.jpg?v=4&backgroundColor=%23ecf0f1&telegram=/&github=farukbrowser&pattern=leaf&colorPattern=%23eaeaea)
+![XDXL%20STORE card name](https://cardivo.vercel.app/api?name=XDXL%20STORE&description=Hi,%20everyone!%20and%20Nice%20to%20meet%20you%20%F0%9F%91%8B&image=https://raw.githubusercontent.com/farukbrowser/zhets/main/profile.jpg?v=4&backgroundColor=%23ecf0f1&telegram=/&github=zhets&pattern=leaf&colorPattern=%23eaeaea)
 
  <p align="center"> 
 <img src="https://img.shields.io/badge/-INSTALL-brightgreen"> 
@@ -67,7 +67,7 @@ wget -q https://raw.githubusercontent.com/farukbrowser/free/main/main.sh && chmo
 
 
 ### CREDIT
-- BASE CODE [@xdxl_store](https://t.me/xdxl_store) & [@GITHUB](https://github.com/farukbrowser/free)
+- BASE CODE [@xdxl_store](https://t.me/frkbrowser) & [@GITHUB](https://github.com/farukbrowser/free)
      <p align="center"><img src="https://img.shields.io/badge/%20COPYRIGHT%20%C2%A9%202023-%20By%20XDXL%20STORE%2C%20Inc-blue"></p> 
  <b> 
  </b> 

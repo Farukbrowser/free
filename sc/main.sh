@@ -21,8 +21,7 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 		echo "OpenVZ is not supported"
 		exit 1
 fi
-read -p " Masukan User Pengguna Script ( bebas ) : " usersc
-echo "${usersc}" > /root/.arthor
+
 localip=$(hostname -I | cut -d\  -f1)
 hst=( `hostname` )
 dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
@@ -172,7 +171,8 @@ read -p "   Subdomain: " pp
 echo "$pp" > /root/domain
 echo "IP=$pp" > /var/lib/xdxl/ipvps.conf
 elif [[ $host == "2" ]]; then
-wget -q https://raw.githubusercontent.com/farukbrowser/free/main/cf.sh && chmod +x cf.sh && ./cf.sh
+#install cf
+wget -q https://raw.githubusercontent.com/farukbrowser/free/main/sc/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
 else
@@ -189,7 +189,7 @@ echo -e "$green          Install SSH                $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/farukbrowser/free/main/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://raw.githubusercontent.com/farukbrowser/free/main/sc/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 # install backup
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install backup             $NC"
@@ -202,7 +202,7 @@ echo -e "$green          Install XRAY              $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 sleep 2
 clear
-wget https://raw.githubusercontent.com/farukbrowser/free/main/insxray.sh && chmod +x insxray.sh && ./insxray.sh
+wget https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green          Install Websocket             $NC"
@@ -212,12 +212,6 @@ wget -O /usr/local/bin/ws-dropbear https://raw.githubusercontent.com/farukbrowse
 wget -O /usr/local/bin/ws-stunnel https://raw.githubusercontent.com/farukbrowser/free/main/sc/sshws/ws-stunnel
 chmod +x /usr/local/bin/ws-dropbear
 chmod +x /usr/local/bin/ws-stunnel
-
-wget https://raw.githubusercontent.com/farukbrowser/free/main/free.zip
-unzip free.zip
-chmod +x menu/*
-mv menu/* /usr/local/sbin/
-rm -rf menu free.zip
 
 cat> /etc/systemd/system/ws-dropbear.service << END
 
@@ -299,6 +293,8 @@ rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/ssh-vpn.sh >/dev/null 2>&1
 secs_to_human "$(($(date +%s) - ${start}))" | tee -a log-install.txt
+echo -e "
+"
 echo -ne "[ ${yell}WARNING${NC} ] Do you want to reboot now ? (y/n)? "
 read answer
 if [ "$answer" == "${answer#[Yy]}" ] ;then
@@ -306,4 +302,8 @@ exit 0
 else
 reboot
 fi
+
+
+
+
 

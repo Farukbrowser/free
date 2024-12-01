@@ -366,13 +366,8 @@ Restart=on-abort
 [Install]
 WantedBy=multi-user.target
 EOF
-tok=AAEFMlD9UqEmIdmvt4LP11U3ti1IxSTuxhc
-link="https://api.telegram.org/bot6976494264:${tok}/sendMessage"
-txz="
-IP : $IP
-Arthor : $(cat /root/.arthor)
-Domain : $(cat /etc/xray/domain)"
-curl -s --max-time 10 -d "chat_id=5548605787&disable_web_page_preview=1&text=$txz&parse_mode=html" $link >/dev/null
+
+# Install Trojan Go
 latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
 trojango_link="https://github.com/p4gefau1t/trojan-go/releases/download/v${latest_version}/trojan-go-linux-amd64.zip"
 mkdir -p "/usr/bin/trojan-go"
@@ -476,8 +471,7 @@ cat > /etc/trojan-go/uuid.txt << END
 $uuid
 END
 
-wget -q -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/Agunxzzz/XrayCol/main/vps.conf.txt"
-
+#nginx config
 cat >/etc/nginx/conf.d/xray.conf <<EOF
     server {
              listen 80;
@@ -616,32 +610,42 @@ systemctl start trojan-go
 systemctl enable trojan-go
 systemctl restart trojan-go
 
+cd /usr/local/sbin/
+# vmess
+wget -O add-ws "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/add-ws.sh" && chmod +x add-ws
+wget -O trialvmess "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/trialvmess.sh" && chmod +x trialvmess
+wget -O renew-ws "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/renew-ws.sh" && chmod +x renew-ws
+wget -O del-ws "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/del-ws.sh" && chmod +x del-ws
+wget -O cek-ws "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/cek-ws.sh" && chmod +x cek-ws
+
+# vless
+wget -O add-vless "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/add-vless.sh" && chmod +x add-vless
+wget -O trialvless "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/trialvless.sh" && chmod +x trialvless
+wget -O renew-vless "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/renew-vless.sh" && chmod +x renew-vless
+wget -O del-vless "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/del-vless.sh" && chmod +x del-vless
+wget -O cek-vless "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/cek-vless.sh" && chmod +x cek-vless
+
+# trojan
+wget -O add-tr "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/add-tr.sh" && chmod +x add-tr
+wget -O trialtrojan "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/trialtrojan.sh" && chmod +x trialtrojan
+wget -O del-tr "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/del-tr.sh" && chmod +x del-tr
+wget -O renew-tr "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/renew-tr.sh" && chmod +x renew-tr
+wget -O cek-tr "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/cek-tr.sh" && chmod +x cek-tr
+
+# trojan go
+wget -O addtrgo "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/addtrgo.sh" && chmod +x addtrgo
+wget -O trialtrojango "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/trialtrojango.sh" && chmod +x trialtrojango
+wget -O deltrgo "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/deltrgo.sh" && chmod +x deltrgo
+wget -O renewtrgo "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/renewtrgo.sh" && chmod +x renewtrgo
+wget -O cektrgo "https://raw.githubusercontent.com/farukbrowser/free/main/sc/xray/cektrgo.sh" && chmod +x cektrgo
+
+
 sleep 1
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
+yellow "xray/Vmess"
+yellow "xray/Vless"
 
 mv /root/domain /etc/xray/domain
-domain=$(cat /etc/xray/domain)
-mkdir -p /home/script/
-DATEVPS=$(date +'%d-%m-%Y')
-CHATID="6963467198"
-KEY="6976494264:AAEFMlD9UqEmIdmvt4LP11U3ti1IxSTuxhc"
-URL="https://api.telegram.org/bot$KEY/sendMessage"
-TIMEZONE=$(printf '%(%H:%M:%S)T')
-TEXT="
-<code>────────────────────</code>
-<b>⛈️ NOTIFICATION SCRIPT FREE ⛈️</b>
-<code>────────────────────</code>
-<code>User    :</code><code>$(cat /root/.arthor)</code>
-<code>ISP     :</code><code>$(cat /root/.isp)</code>
-<code>CITY    :</code><code>$(cat /root/.city)</code>
-<code>DATE    :</code><code>$DATEVPS</code>
-<code>Time    :</code><code>$TIMEZONE</code>
-<code>Expired :</code><code>$exp</code>
-<code>────────────────────</code>
-<i>Automatic Notifications From</i>
-<b>𝑿𝑫𝑿𝑳 𝑺𝑻𝑶𝑹𝑬 𝑩𝑶𝑻</b>
-<code>────────────────────</code>
-"'&reply_markup={"inline_keyboard":[[{"text":" ⛈️ ʙᴜʏ ꜱᴄʀɪᴘᴛ ⛈️ ","url":"https://t.me/frkbrowser"}]]}' 
-
 if [ -f /root/scdomain ];then
 rm /root/scdomain > /dev/null 2>&1
 fi
